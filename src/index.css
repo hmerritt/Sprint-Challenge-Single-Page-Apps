@@ -43,3 +43,7 @@ header h1 {
   margin: 50px auto;
   max-width: 512px;
 }
+
+.character p {
+  margin-bottom: .5rem;
+}
