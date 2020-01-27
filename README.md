@@ -27,6 +27,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
+  - Client-side routing enables you to have *multiple pages* within react which are all stored locally. This means pages will load much quicker as there are no network requests being sent for subsequent pages.
+
 > Answer:
 
 ## Project Set Up
