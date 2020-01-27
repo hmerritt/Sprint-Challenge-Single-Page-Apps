@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
+import SearchForm from './SearchForm';
 
 export default function CharacterList()
 {
     const [characters, setCharacters] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
 
     useEffect(() =>
     {
@@ -16,18 +18,22 @@ export default function CharacterList()
           })
           .catch(err =>
           {
-              console.log('[CharacterList] Error getting characters:', err);
+              console.log('[CharacterList] Error getting characters from api:', err);
           });
     }, []);
 
     return (
-        <section className='character-list'>
-            {
-                characters.map((character, key) =>
+        <>
+            <SearchForm setSearchInput={setSearchInput} />
+            <section className='character-list'>
                 {
-                    return <CharacterCard character={character} key={key} />;
-                })
-            }
-        </section>
+                    characters.filter(character => character.name.toLowerCase().includes(searchInput))
+                    .map((character, key) =>
+                    {
+                        return <CharacterCard character={character} key={key} />;
+                    })
+                }
+            </section>
+        </>
     );
 }
